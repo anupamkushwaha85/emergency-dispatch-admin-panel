@@ -20,7 +20,7 @@
 
 **Emergency108 Admin Control Panel** is the **administrative interface** for the Emergency108 emergency dispatch system. It gives authorised administrators a single pane of glass to monitor and control the entire dispatch operation in real-time — from live ambulance positions on a map to driver verification and emergency management.
 
-The panel connects to the [Emergency108 Spring Boot backend](../emergency108/) over **REST APIs** (JWT-authenticated) and **WebSockets (STOMP/SockJS)** for zero-latency updates without polling.
+The panel connects to the [Emergency108 Spring Boot backend](https://github.com/anupamkushwaha85/emergency-dispatch-system) over **REST APIs** (JWT-authenticated) and **WebSockets (STOMP/SockJS)** for zero-latency updates without polling.
 
 ---
 
@@ -195,7 +195,7 @@ VITE_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
 
 - Node.js 18+
 - npm or yarn
-- A running instance of the [Emergency108 backend](../emergency108/)
+- A running instance of the [Emergency108 backend](https://github.com/anupamkushwaha85/emergency-dispatch-system)
 
 ### Steps
 
@@ -288,7 +288,7 @@ I am a B.Tech CSE student passionate about building scalable Java applications.
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-anupamkushwaha85-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/anupamkushwaha85/)
 [![Portfolio](https://img.shields.io/badge/Portfolio-anupamkushwaha.me-brightgreen?style=flat-square&logo=google-chrome&logoColor=white)](https://anupamkushwaha.me)
 
-> For more info on the full system, see the [Backend README](../emergency108/README.md).
+> For more info on the full system, see the [Backend README](https://github.com/anupamkushwaha85/emergency-dispatch-system#readme).
 
 ---
 
