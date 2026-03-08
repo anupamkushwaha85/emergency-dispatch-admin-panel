@@ -135,9 +135,7 @@ export default function Emergencies() {
     const [toast, setToast] = useState<{ msg: string; type: 'success' | 'error' } | null>(null);
     const [wsConnected, setWsConnected] = useState(false);
     const wsRef = useRef<WebSocketService | null>(null);
-
-    const BACKEND_URL = (import.meta.env.VITE_API_URL as string | undefined) || 'http://localhost:8080';
-
+    const BACKEND_URL = (import.meta.env.VITE_API_URL as string | undefined)?.replace('/api', '') || 'http://localhost:8080';
     const fetchEmergencies = useCallback(async (silent = false) => {
         if (!silent) setLoading(true);
         else setRefreshing(true);
