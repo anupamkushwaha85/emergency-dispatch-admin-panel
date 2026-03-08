@@ -176,14 +176,14 @@ Create a `.env` file in the project root (or set environment variables in your h
 
 | Variable | Required | Description |
 |---|---|---|
-| `VITE_API_URL` | Yes | Backend API base URL, e.g. `https://emergency-dispatch-system-x11l.onrender.com/api` |
+| `VITE_API_URL` | Yes | Backend API base URL, e.g. `https://your-app-name.onrender.com/api` |
 | `VITE_GOOGLE_MAPS_API_KEY` | Yes | Google Maps JavaScript API key (for Live Map page) |
 
 > **Security:** Never commit `.env` files with real keys to the repository. Add `.env` to `.gitignore`.
 
 **Example `.env`:**
 ```env
-VITE_API_URL=https://emergency-dispatch-system-x11l.onrender.com/api
+VITE_API_URL=https://your-app-name.onrender.com/api
 VITE_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
 ```
 
