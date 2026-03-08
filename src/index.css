@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00D4FF;
+  --color-primary-foreground: #0F172A;
+  --color-secondary: #0056D2;
+  --color-secondary-foreground: #FFFFFF;
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-text: #0F172A;
+  --color-accent: #F43F5E;
+  --color-success: #10B981;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: theme('colors.background');
+  color: theme('colors.text');
+}
