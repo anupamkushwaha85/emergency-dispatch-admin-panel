@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Sidebar } from '../components/Sidebar';
 import api from '../services/api';
 import WebSocketService from '../services/websocketService';
