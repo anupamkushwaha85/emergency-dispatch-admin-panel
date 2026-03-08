@@ -2,6 +2,8 @@
 
 > Real-time, role-protected admin dashboard for the Emergency108 dispatch system — built with React 19, TypeScript, Vite, Tailwind CSS v4, WebSockets (STOMP), and Google Maps.
 
+**[🚀 View Live Demo on Vercel](https://emergency-dispatch-admin-panel.vercel.app/)**
+
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Build-Vite-646CFF?logo=vite&logoColor=white)
@@ -11,6 +13,7 @@
 ![Axios](https://img.shields.io/badge/HTTP-Axios-5A29E4?logo=axios&logoColor=white)
 ![JWT](https://img.shields.io/badge/Auth-JWT-black?logo=jsonwebtokens)
 ![Backend](https://img.shields.io/badge/Backend-Spring%20Boot-brightgreen?logo=springboot)
+![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?logo=vercel&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Stable-success)
 
