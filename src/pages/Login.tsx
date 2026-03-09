@@ -156,7 +156,7 @@ const Login: React.FC = () => {
                                 <input
                                     type="text"
                                     className="block w-full pl-10 pr-3 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors outline-none text-slate-800 bg-slate-50/50 tracking-widest text-center font-mono text-lg"
-                                    placeholder="123456"
+                                    placeholder="••••••"
                                     maxLength={6}
                                     value={otp}
                                     onChange={(e) => setOtp(e.target.value)}
