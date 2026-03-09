@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
+import toast from 'react-hot-toast';
 import { Sidebar } from '../components/Sidebar';
 import { Loader2, Ambulance as AmbulanceIcon, Plus, UserPlus, CheckCircle } from 'lucide-react';
 
@@ -77,7 +78,7 @@ const Ambulances: React.FC = () => {
             const msg = typeof error.response?.data === 'string'
                 ? error.response.data
                 : error.response?.data?.message || 'Failed to add ambulance';
-            alert(msg);
+            toast.error(msg);
         } finally {
             setModalLoading(false);
         }
@@ -105,7 +106,7 @@ const Ambulances: React.FC = () => {
             const msg = typeof error.response?.data === 'string'
                 ? error.response.data
                 : error.response?.data?.message || 'Failed to assign driver';
-            alert(msg);
+            toast.error(msg);
         } finally {
             setModalLoading(false);
         }
@@ -192,7 +193,7 @@ const Ambulances: React.FC = () => {
                                     <input
                                         required
                                         className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary/50 outline-none"
-                                        placeholder="DL 01 AB 1234"
+                                        placeholder="e.g., MH 04 AB 1234"
                                         value={newAmbulance.licensePlate}
                                         onChange={e => setNewAmbulance({ ...newAmbulance, licensePlate: e.target.value })}
                                     />

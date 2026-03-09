@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
+import toast from 'react-hot-toast';
 import { Sidebar } from '../components/Sidebar';
 import { Loader2, Plus, Building2, MapPin, Phone, Map as MapIcon, Search } from 'lucide-react';
 import { GoogleMap, useJsApiLoader, Marker, Autocomplete } from '@react-google-maps/api';
@@ -89,7 +90,7 @@ const Hospitals: React.FC = () => {
             const msg = typeof error.response?.data === 'string'
                 ? error.response.data
                 : error.response?.data?.message || 'Failed to add hospital';
-            alert(msg);
+            toast.error(msg);
         } finally {
             setModalLoading(false);
         }
@@ -199,7 +200,7 @@ const Hospitals: React.FC = () => {
                                     <input
                                         required
                                         className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary/50 outline-none"
-                                        placeholder="City General Hospital"
+                                        placeholder="Enter hospital name"
                                         value={newHospital.name}
                                         onChange={e => setNewHospital({ ...newHospital, name: e.target.value })}
                                     />
@@ -209,7 +210,7 @@ const Hospitals: React.FC = () => {
                                     <input
                                         required
                                         className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary/50 outline-none"
-                                        placeholder="+91 9876543210"
+                                        placeholder="Enter contact number"
                                         value={newHospital.phone}
                                         onChange={e => setNewHospital({ ...newHospital, phone: e.target.value })}
                                     />
@@ -282,7 +283,7 @@ const Hospitals: React.FC = () => {
                                             type="number"
                                             step="any"
                                             className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary/50 outline-none"
-                                            placeholder="28.6139"
+                                            placeholder="e.g., 28.6139"
                                             value={newHospital.latitude}
                                             onChange={e => setNewHospital({ ...newHospital, latitude: e.target.value })}
                                         />
@@ -294,7 +295,7 @@ const Hospitals: React.FC = () => {
                                             type="number"
                                             step="any"
                                             className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary/50 outline-none"
-                                            placeholder="77.2090"
+                                            placeholder="e.g., 77.2090"
                                             value={newHospital.longitude}
                                             onChange={e => setNewHospital({ ...newHospital, longitude: e.target.value })}
                                         />
@@ -306,7 +307,7 @@ const Hospitals: React.FC = () => {
                                         required
                                         rows={3}
                                         className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary/50 outline-none resize-none"
-                                        placeholder="123 Health Ave, Medical District..."
+                                        placeholder="Enter complete hospital address"
                                         value={newHospital.address}
                                         onChange={e => setNewHospital({ ...newHospital, address: e.target.value })}
                                     />

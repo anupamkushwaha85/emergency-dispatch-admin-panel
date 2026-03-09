@@ -119,7 +119,7 @@ const Login: React.FC = () => {
                                 <input
                                     type="tel"
                                     className="block w-full pl-10 pr-3 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors outline-none text-slate-800 bg-slate-50/50"
-                                    placeholder="9876543210"
+                                    placeholder="Enter your registered mobile number"
                                     value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
                                     required
@@ -205,7 +205,7 @@ const Login: React.FC = () => {
                                 <input
                                     type="password"
                                     className="block w-full pl-10 pr-3 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors outline-none text-slate-800 bg-slate-50/50"
-                                    placeholder="Enter Passkey"
+                                    placeholder="Enter secure passkey"
                                     value={adminPasskey}
                                     onChange={(e) => setAdminPasskey(e.target.value)}
                                     required

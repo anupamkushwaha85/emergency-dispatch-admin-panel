@@ -8,6 +8,7 @@ import Hospitals from './pages/Hospitals';
 import Emergencies from './pages/Emergencies';
 import { useAuth } from './context/AuthContext';
 import { Loader2 } from 'lucide-react';
+import { Toaster } from 'react-hot-toast';
 
 const ProtectedRoute = ({ children }: { children: React.ReactElement }) => {
   const { isAuthenticated, loading, isAdmin } = useAuth();
@@ -33,27 +34,30 @@ const ProtectedRoute = ({ children }: { children: React.ReactElement }) => {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/*"
-          element={
-            <ProtectedRoute>
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/drivers" element={<Drivers />} />
-                <Route path="/ambulances" element={<Ambulances />} />
-                <Route path="/hospitals" element={<Hospitals />} />
-                <Route path="/live-map" element={<LiveMap />} />
-                <Route path="/emergencies" element={<Emergencies />} />
-                {/* Add more protected routes here */}
-              </Routes>
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </Router>
+    <>
+      <Toaster position="top-right" />
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/*"
+            element={
+              <ProtectedRoute>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/drivers" element={<Drivers />} />
+                  <Route path="/ambulances" element={<Ambulances />} />
+                  <Route path="/hospitals" element={<Hospitals />} />
+                  <Route path="/live-map" element={<LiveMap />} />
+                  <Route path="/emergencies" element={<Emergencies />} />
+                  {/* Add more protected routes here */}
+                </Routes>
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

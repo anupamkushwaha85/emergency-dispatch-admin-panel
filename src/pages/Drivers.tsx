@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
+import toast from 'react-hot-toast';
 import { Sidebar } from '../components/Sidebar';
 import { Loader2, CheckCircle, XCircle, FileText, User, Phone, MapPin } from 'lucide-react';
 import WebSocketService, { type DriverStatusUpdate } from '../services/websocketService';
@@ -33,6 +34,7 @@ const Drivers: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [actionLoading, setActionLoading] = useState<number | null>(null);
     const [selectedDocument, setSelectedDocument] = useState<string | null>(null);
+    const [confirmAction, setConfirmAction] = useState<{ id: number; type: 'verify' | 'reject' } | null>(null);
 
     const fetchDrivers = async () => {
         try {
@@ -110,33 +112,26 @@ const Drivers: React.FC = () => {
         };
     }, [activeTab]);
 
-    const handleVerify = async (id: number) => {
-        if (!window.confirm('Are you sure you want to approve this driver?')) return;
+    const executeConfirmAction = async () => {
+        if (!confirmAction) return;
+        const { id, type } = confirmAction;
 
         setActionLoading(id);
         try {
-            await api.put(`/admin/verify-driver/${id}`);
-            // Remove from list or refresh
-            setDrivers(prev => prev.filter(d => d.id !== id));
-            alert('Driver verified successfully!');
+            if (type === 'verify') {
+                await api.put(`/admin/verify-driver/${id}`);
+                setDrivers(prev => prev.filter(d => d.id !== id));
+                toast.success('Driver verified successfully!');
+            } else {
+                await api.put(`/admin/reject-driver/${id}`);
+                setDrivers(prev => prev.filter(d => d.id !== id));
+                toast.success('Driver rejected successfully.');
+            }
         } catch (error: any) {
-            alert(error.response?.data?.message || 'Verification failed');
+            toast.error(error.response?.data?.message || `${type === 'verify' ? 'Verification' : 'Rejection'} failed`);
         } finally {
             setActionLoading(null);
-        }
-    };
-
-    const handleReject = async (id: number) => {
-        if (!window.confirm('Reject this driver verification request?')) return;
-
-        setActionLoading(id);
-        try {
-            await api.put(`/admin/reject-driver/${id}`);
-            setDrivers(prev => prev.filter(d => d.id !== id));
-        } catch (error: any) {
-            alert(error.response?.data?.message || 'Rejection failed');
-        } finally {
-            setActionLoading(null);
+            setConfirmAction(null);
         }
     };
 
@@ -222,7 +217,7 @@ const Drivers: React.FC = () => {
                                     {/* Actions */}
                                     <div className="flex items-center gap-3 w-full md:w-auto mt-4 md:mt-0">
                                         <button
-                                            onClick={() => handleReject(driver.id)}
+                                            onClick={() => setConfirmAction({ id: driver.id, type: 'reject' })}
                                             disabled={actionLoading === driver.id}
                                             className="flex-1 md:flex-none px-4 py-2 border border-red-200 text-red-600 rounded-lg hover:bg-red-50 transition-colors font-medium flex items-center justify-center gap-2"
                                         >
@@ -230,7 +225,7 @@ const Drivers: React.FC = () => {
                                             Reject
                                         </button>
                                         <button
-                                            onClick={() => handleVerify(driver.id)}
+                                            onClick={() => setConfirmAction({ id: driver.id, type: 'verify' })}
                                             disabled={actionLoading === driver.id}
                                             className="flex-1 md:flex-none px-6 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 shadow-lg shadow-emerald-500/20 transition-all font-medium flex items-center justify-center gap-2"
                                         >
@@ -298,6 +293,39 @@ const Drivers: React.FC = () => {
                                 alt="Driver Document"
                                 className="max-w-full max-h-[85vh] rounded-lg shadow-2xl border border-white/20"
                             />
+                        </div>
+                    </div>
+                )}
+
+                {/* Confirm Modal */}
+                {confirmAction && (
+                    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+                        <div className="bg-white rounded-2xl w-full max-w-sm p-6 animate-in fade-in zoom-in duration-200 shadow-2xl">
+                            <h2 className="text-xl font-bold text-slate-800 mb-2">Confirm Action</h2>
+                            <p className="text-slate-500 mb-6 font-medium">
+                                {confirmAction.type === 'verify'
+                                    ? 'Are you sure you want to approve this driver?'
+                                    : 'Reject this driver verification request?'}
+                            </p>
+                            <div className="flex justify-end gap-3">
+                                <button
+                                    onClick={() => setConfirmAction(null)}
+                                    className="px-4 py-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors font-medium"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={executeConfirmAction}
+                                    disabled={actionLoading === confirmAction.id}
+                                    className={`px-4 py-2 text-white rounded-lg shadow-lg transition-colors flex items-center gap-2 font-medium ${confirmAction.type === 'verify'
+                                            ? 'bg-emerald-500 hover:bg-emerald-600 shadow-emerald-500/20'
+                                            : 'bg-red-500 hover:bg-red-600 shadow-red-500/20'
+                                        }`}
+                                >
+                                    {actionLoading === confirmAction.id && <Loader2 className="animate-spin" size={16} />}
+                                    {confirmAction.type === 'verify' ? 'Approve' : 'Reject'}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}
