@@ -62,6 +62,9 @@ export const Sidebar: React.FC = () => {
                     <LogOut size={16} />
                     Sign Out
                 </button>
+                <p className="mt-4 text-center text-xs text-slate-400">
+                    © 2026 Emergency 108. All rights reserved.
+                </p>
             </div>
         </aside>
     );
