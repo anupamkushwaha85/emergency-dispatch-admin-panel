@@ -285,7 +285,17 @@ For reference, the other role OTPs used by the mobile app are:
 
 ---
 
-## 📄 License
+## � Mobile App — Download the APK
+
+The Flutter mobile app for citizens and drivers that works alongside this admin panel is available for Android.
+
+[![Download APK](https://img.shields.io/badge/Download-Latest%20APK-02569B?style=for-the-badge&logo=android&logoColor=white)](https://github.com/anupamkushwaha85/emergency108/releases/latest)
+
+> The APK is automatically built and released via GitHub Actions on every push to the Flutter repo's `main` branch. Download the latest `app-release.apk` from the link above and install it on any Android device.
+
+---
+
+## �📄 License
 
 This project is licensed under the [MIT License](LICENSE).
 
