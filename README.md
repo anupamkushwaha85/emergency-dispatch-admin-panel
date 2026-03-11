@@ -25,6 +25,14 @@
 
 The panel connects to the [Emergency108 Spring Boot backend](https://github.com/anupamkushwaha85/emergency-dispatch-system) over **REST APIs** (JWT-authenticated) and **WebSockets (STOMP/SockJS)** for zero-latency updates without polling.
 
+### 🔗 Related Repositories & Links
+
+| Component | Link |
+|---|---|
+| 📱 Flutter Mobile App | [emergency108](https://github.com/anupamkushwaha85/emergency108) |
+| ⚙️ Backend (Spring Boot) | [emergency-dispatch-system](https://github.com/anupamkushwaha85/emergency-dispatch-system) |
+| 🌐 Admin Panel Live Demo | [emergency-dispatch-admin-panel.vercel.app](https://emergency-dispatch-admin-panel.vercel.app/) |
+
 ---
 
 ## ✨ Key Features
@@ -291,7 +299,7 @@ I am a B.Tech CSE student passionate about building scalable Java applications.
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-anupamkushwaha85-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/anupamkushwaha85/)
 [![Portfolio](https://img.shields.io/badge/Portfolio-anupamkushwaha.me-brightgreen?style=flat-square&logo=google-chrome&logoColor=white)](https://anupamkushwaha.me)
 
-> For more info on the full system, see the [Backend README](https://github.com/anupamkushwaha85/emergency-dispatch-system#readme).
+> For more info on the full system, see the [Backend README](https://github.com/anupamkushwaha85/emergency-dispatch-system#readme) and the [Flutter Mobile App README](https://github.com/anupamkushwaha85/emergency108#readme).
 
 ---
 
